@@ -14,28 +14,18 @@ int anagram(char str1[],char str2[])
         return -1;
     }
 
-    int index,i;
-    for (i = 0; str1[i]!='\0'; ++i)
+
+    for (int i = 0; i<l1; ++i)
     {
-    	index = str1[i] - 'a';
-        p[index]++;
+	    p[str1[i]]++;
+	    p[str2[i]]--;
+
     }
 
-    for (i = 0; str2[i]!='\0'; ++i)
+    for(int i=0;i<256;i++)
     {
-        index = str1[i] - 'a';
-        p[index] = p[index]-1;
-
-        if(p[index]<0)
-        {
-            printf("its not anagram\n");
-            return -1;
-        }
-    }
-
-    if(str2[i] == '\0')
-    {
-        printf("it is anagram\n");
+	    if(p[i]!=0)
+		    return 0;
     }
 
     return 1;
@@ -44,7 +34,7 @@ int anagram(char str1[],char str2[])
 
 int main(void)
 {
-    printf("%d",anagram("decimal","medical"));
+    printf("%d",anagram("decidmal","medical"));
 
     return 0;
 }
